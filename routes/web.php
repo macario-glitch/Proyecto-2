@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Empleados;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
+Route::middleware(['auth:sanctum','verified'])->group(function (){
+    Route::get('/empleados',Empleados::class);
+    Route::get('/dashboard',Function(){
         return view('dashboard');
     })->name('dashboard');
 });
